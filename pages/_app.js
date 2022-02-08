@@ -35,17 +35,17 @@ const MyApp = ({ Component, pageProps }) => {
           <Prefetch url="/">
             <div className="pt-10 flex flex-row items-center justify-center gap-x-2">
               <NextImage
-                src={'https://demos-layer0-netflix-default.layer0.link/assets/layer0.png'}
+                src={'https://demos-layer0-netflix-default.layer0-limelight.link/assets/layer0.png'}
                 height={39 * 0.8}
                 width={159 * 0.8}
               />
               <NextImage
-                src={'https://demos-layer0-netflix-default.layer0.link/assets/plus.png'}
+                src={'https://demos-layer0-netflix-default.layer0-limelight.link/assets/plus.png'}
                 height={10 * 0.8}
                 width={10 * 0.8}
               />
               <NextImage
-                src={'https://demos-layer0-netflix-default.layer0.link/assets/tvmaze.png'}
+                src={'https://demos-layer0-netflix-default.layer0-limelight.link/assets/tvmaze.png'}
                 height={40 * 0.8}
                 width={126.5 * 0.8}
               />

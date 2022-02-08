@@ -4,7 +4,7 @@ A demo deployment of Next.js app to Layer0.
 
 ## Demo
 
-https://demos-layer0-netflix-default.layer0.link
+https://demos-layer0-netflix-default.layer0-limelight.link
 
 ## Try It Now
 

@@ -5,7 +5,7 @@ const { withLayer0, withServiceWorker } = require('@layer0/next/config')
 const _preLayer0Export = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'demos-layer0-netflix-default.layer0.link'],
+    domains: ['localhost', 'demos-layer0-netflix-default.layer0-limelight.link'],
   },
 }
 
