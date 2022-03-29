@@ -1,8 +1,11 @@
 import { nextRoutes } from '@layer0/next'
 import { Router } from '@layer0/core/router'
 import { assetCache, NEXT_CACHE_HANDLER, SSR_CACHE_HANDLER } from './cache.js'
+import prerenderURLs from './prerenderURLs'
 
 export default new Router()
+  .prerender(prerenderURLs)
+
   // Serve service worker
   .get('/service-worker.js', ({ serviceWorker }) => {
     return serviceWorker('.next/static/service-worker.js')
