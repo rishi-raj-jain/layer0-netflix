@@ -1,4 +1,4 @@
-exports.foreverEdge = {
+export const foreverEdge = {
   browser: false,
   edge: {
     staleWhileRevalidateSeconds: 1,
@@ -6,7 +6,7 @@ exports.foreverEdge = {
   },
 }
 
-exports.assetCache = {
+export const assetCache = {
   edge: {
     maxAgeSeconds: 60 * 60 * 60 * 365,
     forcePrivateCaching: true,
@@ -17,7 +17,7 @@ exports.assetCache = {
   },
 }
 
-exports.SSR_CACHE_HANDLER = ({ removeUpstreamResponseHeader, cache }) => {
+export const SSR_CACHE_HANDLER = ({ removeUpstreamResponseHeader, cache }) => {
   removeUpstreamResponseHeader('cache-control')
   cache({
     browser: false,
@@ -28,7 +28,7 @@ exports.SSR_CACHE_HANDLER = ({ removeUpstreamResponseHeader, cache }) => {
   })
 }
 
-exports.NEXT_CACHE_HANDLER = ({ removeUpstreamResponseHeader, cache }) => {
+export const NEXT_CACHE_HANDLER = ({ removeUpstreamResponseHeader, cache }) => {
   removeUpstreamResponseHeader('cache-control')
   cache({
     browser: {
