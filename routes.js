@@ -8,7 +8,7 @@ export default new Router()
 
   // Serve service worker
   .get('/service-worker.js', ({ serviceWorker }) => {
-    return serviceWorker('.next/static/service-worker.js')
+    serviceWorker('.next/static/service-worker.js')
   })
   .get('/_next/server/middleware-manifest.json', ({ serveStatic }) => {
     serveStatic('.next/server/middleware-manifest.json')
