@@ -4,7 +4,7 @@ import { assetCache, NEXT_CACHE_HANDLER, SSR_CACHE_HANDLER } from './cache.js'
 import prerenderURLs from './prerenderURLs'
 
 export default new Router()
-  .prerender(prerenderURLs)
+  .prerender(prerenderURLs.map((path) => ({ path })))
 
   // Serve service worker
   .get('/service-worker.js', ({ serviceWorker }) => {
