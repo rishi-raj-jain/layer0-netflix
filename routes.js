@@ -7,6 +7,9 @@ export default new Router()
   .get('/service-worker.js', ({ serviceWorker }) => {
     return serviceWorker('.next/static/service-worker.js')
   })
+  .get('/_next/server/middleware-manifest.json', ({ serveStatic }) => {
+    serveStatic('.next/server/middleware-manifest.json')
+  })
 
   // Cache SSR HTML
   .match('/', SSR_CACHE_HANDLER)

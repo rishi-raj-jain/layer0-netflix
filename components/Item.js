@@ -4,10 +4,13 @@ import { Prefetch } from '@layer0/react'
 
 const Item = ({ id, name, image }) => {
   let prefetchProps = {}
-  if (process.browser) {
+
+  if (typeof window !== 'undefined') {
     prefetchProps.url = `/_next/data/${__NEXT_DATA__.buildId}/show/${id}.json?id=${id}`
   }
+
   let proxyImage = image.hasOwnProperty('medium') ? image['medium'] : image['original']
+
   return (
     <Link href={`/show/${id}`}>
       <Prefetch {...prefetchProps}>
