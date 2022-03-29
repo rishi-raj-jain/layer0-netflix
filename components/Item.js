@@ -14,12 +14,12 @@ const Item = ({ id, name, image }) => {
       <Prefetch {...prefetchProps}>
         <a href={`/show/${id}`}>
           <div
+            className="flex flex-col items-center text-center"
             onClick={() => {
               if (typeof window !== 'undefined') {
                 window.homeScrollLeave = window.scrollY
               }
             }}
-            className="flex flex-col items-center text-center"
           >
             <Image
               proxyImage={image.hasOwnProperty('medium') ? image['medium'] : image['original']}
