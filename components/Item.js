@@ -1,18 +1,14 @@
 import Image from './Image'
 import Link from 'next/link'
 import { Prefetch } from '@layer0/react'
+import { createNextDataURL } from '@layer0/next/client'
 
 const Item = ({ id, name, image }) => {
-  let prefetchProps = {}
-
-  if (typeof window !== 'undefined') {
-    prefetchProps.url = `/_next/data/${__NEXT_DATA__.buildId}/show/${id}.json?id=${id}`
-  }
-
   return (
     <Link href={`/show/${id}`}>
-      <Prefetch {...prefetchProps}>
-        <a href={`/show/${id}`}>
+      <Prefetch url={createNextDataURL({ href: `/show/${id}`, routeParams: { id } })}>
+        <a>
+          {/* it's critical that the keys match the param names in your next page routes */}
           <div
             className="flex flex-col items-center text-center"
             onClick={() => {
