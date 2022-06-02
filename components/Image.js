@@ -22,10 +22,7 @@ const Image = ({ proxyImage }) => {
       layout="fixed"
       height={351.19}
       objectFit="contain"
-      src={proxyImage.replace(
-        'https://static.tvmaze.com/',
-        'https://demos-layer0-netflix-default.layer0-limelight.link/image/'
-      )}
+      src={proxyImage.replace('https://static.tvmaze.com/', 'https://demos-layer0-netflix-default.layer0-limelight.link/image/')}
       onLoad={() => {
         // if window is available, set image in window
         if (typeof window !== 'undefined') {

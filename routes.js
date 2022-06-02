@@ -1,28 +1,22 @@
 import { nextRoutes } from '@layer0/next'
 import { Router } from '@layer0/core/router'
-import { assetCache, NEXT_CACHE_HANDLER, SSR_CACHE_HANDLER } from './cache.js'
-import prerenderURLs from './prerenderURLs'
+import getPathsToPrerender from 'prerenderRequests'
+import { assetCache, NEXT_CACHE_HANDLER } from './cache.js'
 
 export default new Router()
-  .prerender(prerenderURLs.map((path) => ({ path })))
+  // Pre-render the static home page
+  // By pre-rendering, once the project is deployed
+  // the set of links are visited to warm the cache
+  // for future visits (expected to be the first view for real users)
+  // More on static prerendering: https://docs.layer0.co/guides/static_prerendering
+  .prerender(getPathsToPrerender)
 
   // Serve service worker
   .get('/service-worker.js', ({ serviceWorker }) => {
     serviceWorker('.next/static/service-worker.js')
   })
-  .get('/_next/server/middleware-manifest.json', ({ serveStatic }) => {
-    serveStatic('.next/server/middleware-manifest.json')
-  })
-
-  // Cache SSR HTML
-  .match('/', SSR_CACHE_HANDLER)
-  .match('/show/:path*', SSR_CACHE_HANDLER)
 
   // Cache static assets
-  .match('/fonts/:file', ({ cache, serveStatic }) => {
-    cache(assetCache)
-    serveStatic('public/fonts/:file')
-  })
   .match('/assets/:file', ({ cache, serveStatic }) => {
     cache(assetCache)
     serveStatic('public/assets/:file')
@@ -38,7 +32,7 @@ export default new Router()
     cache(assetCache)
   })
 
-  // Cache API calls
+  // Cache API calls for faster transitions
   .match('/_next/data/:build/index.json', NEXT_CACHE_HANDLER)
   .match('/_next/data/:build/show/:name.json', NEXT_CACHE_HANDLER)
 
